@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: percy-blog
+  labels:
+    app: percy-blog
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: percy-blog
+  template:
+    metadata:
+      labels:
+        app: percy-blog
+    spec:
+      containers:
+        - name: percy-blog
+          image: <AWS_ACCOUNT_ID>.dkr.ecr.eu-north-1.amazonaws.com/percy-blog:latest
+          ports:
+            - containerPort: 8000
+
